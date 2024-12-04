@@ -45,6 +45,8 @@ public struct Color: Codable, Equatable {
   public let indexed: Int?
   public let auto: Int?
   public let rgb: String?
+  public let theme: Int?
+  public let tint: Double?
 }
 
 public struct NumberFormats: Codable, Equatable {
