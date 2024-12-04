@@ -301,7 +301,7 @@ public struct CellStyles: Codable, Equatable {
 public struct CellStyle: Codable, Equatable {
   public let name: String
   public let formatId: Int
-  public let builtinId: Int
+  public let builtinId: Int?
 
   enum CodingKeys: String, CodingKey {
     case formatId = "xfId"
