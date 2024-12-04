@@ -81,8 +81,11 @@ public struct RichText: Codable, Equatable {
   }
 
   public struct Color: Codable, Equatable {
-    let theme: String?
-    let rgb: String?
+    public let indexed: Int?
+    public let auto: Int?
+    public let rgb: String?
+    public let theme: Int?
+    public let tint: Double?
   }
 
   public struct Font: Codable, Equatable {
