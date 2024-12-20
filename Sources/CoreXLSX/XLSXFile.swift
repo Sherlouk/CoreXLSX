@@ -87,14 +87,18 @@ public class XLSXFile {
   public init(
     data: Data,
     bufferSize: UInt32 = 10 * 1024 * 1024,
-    errorContextLength: UInt = 0
+    errorContextLength: UInt = 0,
+    pathEncoding: String.Encoding? = nil
   ) throws {
-    guard let archive = Archive(data: data, accessMode: .read)
-    else { throw CoreXLSXError.dataIsNotAnArchive }
+    let archive = try Archive(data: data, accessMode: .read, pathEncoding: pathEncoding)
 
     self.archive = archive
     self.bufferSize = bufferSize
     decoder.errorContextLength = errorContextLength
+    
+    let testEntry = archive.first { _ in true }!
+    print([ testEntry.path, testEntry.path(using: .utf8), testEntry.path(using: .isoLatin1) ]
+      .joined(separator: ", "))
     
     let files = archive
       .map { $0.path }
