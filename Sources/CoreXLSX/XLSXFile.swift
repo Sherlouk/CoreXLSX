@@ -95,18 +95,6 @@ public class XLSXFile {
     self.archive = archive
     self.bufferSize = bufferSize
     decoder.errorContextLength = errorContextLength
-    
-    let testEntry = archive.first { _ in true }!
-    print([ testEntry.path, testEntry.path(using: .utf8), testEntry.path(using: .isoLatin1) ]
-      .joined(separator: ", "))
-    
-    let files = archive
-      .map { $0.path }
-      .filter { $0.contains("xl/drawings") == false }
-      .filter { $0.contains("xl/printerSettings") == false }
-      .sorted()
-    
-    logger.info("\(files.joined(separator: ", "))")
   }
   #endif
 
@@ -131,7 +119,6 @@ public class XLSXFile {
       data += $0
     }
 
-    logger.info("CoreXLSX.parseEntry", metadata: ["path": .string(entryPath), "data": .stringConvertible(data)])
     return try decoder.decode(type, from: data)
   }
 
