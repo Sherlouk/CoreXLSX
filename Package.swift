@@ -27,6 +27,7 @@ let package = Package(
              .upToNextMinor(from: "0.14.0")),
     .package(url: "https://github.com/weichsel/ZIPFoundation.git",
              .upToNextMinor(from: "0.9.11")),
+    .package(url: "https://github.com/apple/swift-log.git", from: "1.6.2"),
   ],
   targets: [
     // Targets are the basic building blocks of a package. A target can define
@@ -35,7 +36,7 @@ let package = Package(
     // packages which this package depends on.
     .target(
       name: "CoreXLSX",
-      dependencies: ["XMLCoder", "ZIPFoundation"]
+      dependencies: ["XMLCoder", "ZIPFoundation", "Logging"]
     ),
     .testTarget(
       name: "CoreXLSXTests",

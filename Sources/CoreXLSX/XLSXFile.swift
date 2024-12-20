@@ -18,6 +18,7 @@
 import Foundation
 import XMLCoder
 import ZIPFoundation
+import Logging
 
 @available(*, deprecated, renamed: "CoreXLSXError")
 public typealias XLSXReaderError = CoreXLSXError
@@ -33,6 +34,7 @@ public enum CoreXLSXError: Error {
  user's filesystem.
  */
 public class XLSXFile {
+  private let logger = Logger(label: "corexlsx")
   private let archive: Archive
   private let decoder: XMLDecoder = {
     let result = XMLDecoder()
@@ -93,6 +95,14 @@ public class XLSXFile {
     self.archive = archive
     self.bufferSize = bufferSize
     decoder.errorContextLength = errorContextLength
+    
+    let files = archive
+      .map { $0.path }
+      .filter { $0.contains("xl/drawings") == false }
+      .filter { $0.contains("xl/printerSettings") == false }
+      .sorted()
+    
+    logger.info("\(files.joined(separator: ", "))")
   }
   #endif
 
@@ -108,6 +118,7 @@ public class XLSXFile {
       pathString
 
     guard let entry = archive[entryPath] else {
+      logger.error("CoreXLSX.archiveEntryNotFound", metadata: ["path": .string(entryPath)])
       throw CoreXLSXError.archiveEntryNotFound
     }
 
@@ -116,6 +127,7 @@ public class XLSXFile {
       data += $0
     }
 
+    logger.info("CoreXLSX.parseEntry", metadata: ["path": .string(entryPath), "data": .stringConvertible(data)])
     return try decoder.decode(type, from: data)
   }
 
