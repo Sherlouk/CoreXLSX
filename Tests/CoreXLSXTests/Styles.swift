@@ -32,7 +32,7 @@ private let fonts = Fonts(
   items: [
     Font(
       size: Font.Size(value: 10),
-      color: Color(indexed: 8, auto: nil, rgb: nil),
+      color: Color(indexed: 8, auto: nil, rgb: nil, theme: nil, tint: nil),
       name: Font.Name(value: "Helvetica Neue"),
       bold: nil,
       italic: nil,
@@ -40,7 +40,7 @@ private let fonts = Fonts(
     ),
     Font(
       size: Font.Size(value: 12),
-      color: Color(indexed: 8, auto: nil, rgb: nil),
+      color: Color(indexed: 8, auto: nil, rgb: nil, theme: nil, tint: nil),
       name: Font.Name(value: "Helvetica Neue"),
       bold: nil,
       italic: nil,
@@ -48,7 +48,7 @@ private let fonts = Fonts(
     ),
     Font(
       size: Font.Size(value: 10),
-      color: Color(indexed: 8, auto: nil, rgb: nil),
+      color: Color(indexed: 8, auto: nil, rgb: nil, theme: nil, tint: nil),
       name: Font.Name(value: "Helvetica Neue"),
       bold: Font.Bold(value: true),
       italic: nil,
@@ -70,18 +70,18 @@ private let fills = Fills(items: [
   )),
   Fill(patternFill: PatternFill(
     patternType: "solid",
-    foregroundColor: Color(indexed: 9, auto: nil, rgb: nil),
-    backgroundColor: Color(indexed: nil, auto: 1, rgb: nil)
+    foregroundColor: Color(indexed: 9, auto: nil, rgb: nil, theme: nil, tint: nil),
+    backgroundColor: Color(indexed: nil, auto: 1, rgb: nil, theme: nil, tint: nil)
   )),
   Fill(patternFill: PatternFill(
     patternType: "solid",
-    foregroundColor: Color(indexed: 11, auto: nil, rgb: nil),
-    backgroundColor: Color(indexed: nil, auto: 1, rgb: nil)
+    foregroundColor: Color(indexed: 11, auto: nil, rgb: nil, theme: nil, tint: nil),
+    backgroundColor: Color(indexed: nil, auto: 1, rgb: nil, theme: nil, tint: nil)
   )),
   Fill(patternFill: PatternFill(
     patternType: "solid",
-    foregroundColor: Color(indexed: 13, auto: nil, rgb: nil),
-    backgroundColor: Color(indexed: nil, auto: 1, rgb: nil)
+    foregroundColor: Color(indexed: 13, auto: nil, rgb: nil, theme: nil, tint: nil),
+    backgroundColor: Color(indexed: nil, auto: 1, rgb: nil, theme: nil, tint: nil)
   )),
 ], count: 5)
 
@@ -105,7 +105,7 @@ final class StylesTests: XCTestCase {
     XCTAssertEqual(styles.cellStyles!.count, 1)
     XCTAssertEqual(styles.differentialFormats!.count, 0)
     XCTAssertEqual(styles.tableStyles!.count, 0)
-    XCTAssertEqual(styles.colors!.indexed.rgbColors.count, 14)
+    XCTAssertEqual(styles.colors!.indexed?.rgbColors.count, 14)
 
     let ws = try file.parseWorksheet(at: file.parseWorksheetPaths()[0])
     guard let sd = ws.data else {

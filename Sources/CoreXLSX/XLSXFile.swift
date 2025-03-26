@@ -44,7 +44,7 @@ public class XLSXFile {
   }()
 
   /// Buffer size passed to `archive.extract` call
-  private let bufferSize: UInt32
+  private let bufferSize: Int
 
   /// - Parameters:
   ///   - filepath: path to the `.xlsx` file to be processed.
@@ -61,7 +61,7 @@ public class XLSXFile {
   /// span more than a few lines.
   public init?(
     filepath: String,
-    bufferSize: UInt32 = 10 * 1024 * 1024,
+    bufferSize: Int = 10 * 1024 * 1024,
     errorContextLength: UInt = 0
   ) {
     let archiveURL = URL(fileURLWithPath: filepath)
@@ -86,7 +86,7 @@ public class XLSXFile {
   /// around that location of specified length.
   public init(
     data: Data,
-    bufferSize: UInt32 = 10 * 1024 * 1024,
+    bufferSize: Int = 10 * 1024 * 1024,
     errorContextLength: UInt = 0,
     pathEncoding: String.Encoding? = nil
   ) throws {
@@ -146,6 +146,16 @@ public class XLSXFile {
 
     do {
       return try parseEntry("xl/sharedStrings.xml", SharedStrings.self)
+    } catch CoreXLSXError.archiveEntryNotFound {
+      return nil
+    }
+  }
+  
+  public func parseCoreDocumentProperties() throws -> CoreDocumentProperties? {
+    decoder.keyDecodingStrategy = .useDefaultKeys
+    
+    do {
+      return try parseEntry("docProps/core.xml", CoreDocumentProperties.self)
     } catch CoreXLSXError.archiveEntryNotFound {
       return nil
     }
