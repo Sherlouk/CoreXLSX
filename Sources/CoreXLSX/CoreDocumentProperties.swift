@@ -8,10 +8,10 @@
 import Foundation
 
 public struct CoreDocumentProperties: Codable, Equatable {
-  let creator: String?
-  let createdDate: String?
-  let lastModifiedBy: String?
-  let lastModified: String?
+  public let creator: String?
+  public let createdDate: String?
+  public let lastModifiedBy: String?
+  public let lastModified: String?
   
   enum CodingKeys: String, CodingKey {
     case creator = "creator"
