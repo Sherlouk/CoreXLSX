@@ -41,7 +41,10 @@ extension CellReference: Decodable {
   public init(from decoder: Decoder) throws {
     let container = try decoder.singleValueContainer()
     let reference = try container.decode(String.self)
-
+    try self.init(reference)
+  }
+  
+  public init(_ reference: String) throws {
     guard let lastLetterIndex = reference.lastIndex(where: {
       $0.unicodeScalars.allSatisfy {
         ColumnReference.allowedCharacters.contains($0)

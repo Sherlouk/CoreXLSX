@@ -69,6 +69,11 @@ final class CellReferenceTests: XCTestCase {
     let c2Encoded = try encoder.encode(c2, withRootKey: "Cell")
     XCTAssertEqual(c2, try decoder.decode(Cell.self, from: c2Encoded))
   }
+  
+  func testCellReferenceFromString() throws {
+    XCTAssertEqual(try CellReference("A2").column.value, "A")
+    XCTAssertEqual(try CellReference("A2").row, 2)
+  }
 
   func testColumnReference() {
     XCTAssertNil(ColumnReference(""))
