@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoreXLSX - SharedStrings.Item</title>
+    <title>CoreXLSX - CoreDocumentProperties</title>
     <link rel="stylesheet" type="text/css" href="/CoreXLSX/all.css" media="all" />
 </head>
 <body>
@@ -26,7 +26,7 @@
     <nav>
         <div class="wrapper">
             <h2>On This Page</h2>
-            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Member Of</a></li><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#sharedstrings.item.text">text</a></li><li class="variable"><a href="#sharedstrings.item.richtext">rich​Text</a></li></ul></li></ol>
+            <ol><li><a href="#relationships">Relationships</a><ul><li><a href="#relationships">Conforms To</a></li></ul></li><li><a href="#properties">Properties</a><ul><li class="variable"><a href="#coredocumentproperties.creator">creator</a></li><li class="variable"><a href="#coredocumentproperties.createddate">created​Date</a></li><li class="variable"><a href="#coredocumentproperties.lastmodifiedby">last​Modified​By</a></li><li class="variable"><a href="#coredocumentproperties.lastmodified">last​Modified</a></li></ul></li></ol>
         </div>
     </nav>
 
@@ -34,10 +34,10 @@
         <article>
             <h1>
     <small>Structure</small>
-    <code class="name">Shared​Strings.​Item</code>
+    <code class="name">Core​Document​Properties</code>
 </h1>
 
-<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">Item</span>: <span class="type">Codable</span>, <span class="type">Equatable</span></code></pre></body></html>
+<html><body><pre class="highlight"><code><span class="keyword">public</span> <span class="keyword">struct</span> <span class="type">CoreDocumentProperties</span>: <span class="type">Codable</span>, <span class="type">Equatable</span></code></pre></body></html>
 <section id="relationships">
     <h2 hidden>Relationships</h2>
         <figure>
@@ -52,12 +52,12 @@
 <g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
 <title>%3</title>
 <polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-112 868,-112 868,4 -4,4"/>
-<!-- SharedStrings.Item -->
+<!-- CoreDocumentProperties -->
 <g id="node1" class="node structure current">
-<title>SharedStrings.Item</title>
-<g id="a_node1"><a xlink:href="/CoreXLSX/SharedStrings_Item" xlink:title="SharedStrings.Item">
+<title>CoreDocumentProperties</title>
+<g id="a_node1"><a xlink:href="/CoreXLSX/CoreDocumentProperties" xlink:title="CoreDocumentProperties">
 <path fill="none" stroke="#000000" stroke-width="3" d="M528,-108C528,-108 336,-108 336,-108 330,-108 324,-102 324,-96 324,-96 324,-84 324,-84 324,-78 330,-72 336,-72 336,-72 528,-72 528,-72 534,-72 540,-78 540,-84 540,-84 540,-96 540,-96 540,-102 534,-108 528,-108"/>
-<text text-anchor="middle" x="432" y="-86.3" font-family="Menlo" font-size="14.00" fill="#000000">SharedStrings.Item</text>
+<text text-anchor="middle" x="432" y="-86.3" font-family="Menlo" font-size="14.00" fill="#000000">CoreDocumentProperties</text>
 </a>
 </g>
 </g>
@@ -70,9 +70,9 @@
 </a>
 </g>
 </g>
-<!-- SharedStrings.Item&#45;&gt;Equatable -->
-<g id="edge2" class="edge conformsTo">
-<title>SharedStrings.Item&#45;&gt;Equatable</title>
+<!-- CoreDocumentProperties&#45;&gt;Equatable -->
+<g id="edge1" class="edge conformsTo">
+<title>CoreDocumentProperties&#45;&gt;Equatable</title>
 <path fill="none" stroke="#000000" d="M375.5134,-71.9243C344.4871,-61.9959 305.8297,-49.6255 273.3694,-39.2382"/>
 <polygon fill="#000000" stroke="#000000" points="274.1008,-35.7975 263.5098,-36.0831 271.9673,-42.4645 274.1008,-35.7975"/>
 </g>
@@ -85,9 +85,9 @@
 </a>
 </g>
 </g>
-<!-- SharedStrings.Item&#45;&gt;Codable -->
-<g id="edge1" class="edge conformsTo">
-<title>SharedStrings.Item&#45;&gt;Codable</title>
+<!-- CoreDocumentProperties&#45;&gt;Codable -->
+<g id="edge2" class="edge conformsTo">
+<title>CoreDocumentProperties&#45;&gt;Codable</title>
 <path fill="none" stroke="#000000" d="M488.4866,-71.9243C519.5129,-61.9959 558.1703,-49.6255 590.6306,-39.2382"/>
 <polygon fill="#000000" stroke="#000000" points="592.0327,-42.4645 600.4902,-36.0831 589.8992,-35.7975 592.0327,-42.4645"/>
 </g>
@@ -95,18 +95,9 @@
 </svg>
 
 
-    <figcaption hidden>Inheritance graph for SharedStrings.Item.</figcaption>
+    <figcaption hidden>Inheritance graph for CoreDocumentProperties.</figcaption>
 </figure>
-        <h3>Member Of</h3>
-<dl>
-    <dt class="structure"><code><a href="/CoreXLSX/SharedStrings">SharedStrings</a></code></dt>
-<dd><p>Strings in spreadsheet internals are frequently represented as strings
-shared between multiple worksheets. To parse a string value from a cell
-you should use <code>stringValue(_: SharedStrings)</code> function on <code>Cell</code> together with
-<code>parseSharedString()</code> on your <code>XLSXFile</code> instance.</p>
-</dd>
-</dl>
-<h3>Conforms To</h3>
+        <h3>Conforms To</h3>
 <dl>
     <dt class="unknown"><code>Codable</code></dt>
 <dt class="unknown"><code>Equatable</code></dt>
@@ -115,17 +106,29 @@ you should use <code>stringValue(_: SharedStrings)</code> function on <code>Cell
     <section id="properties">
         <h2>Properties</h2>
 
-        <div role="article" class="variable" id="sharedstrings.item.text">
+        <div role="article" class="variable" id="coredocumentproperties.creator">
     <h3>
-        <code>text</code>
+        <code>creator</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">text</span>: <span class="type">String</span>?</code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">creator</span>: <span class="type">String</span>?</code></pre></body></html>
 </div>
-<div role="article" class="variable" id="sharedstrings.item.richtext">
+<div role="article" class="variable" id="coredocumentproperties.createddate">
     <h3>
-        <code>rich​Text</code>
+        <code>created​Date</code>
     </h3>
-    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">richText</span>: [<a href="/CoreXLSX/RichText"><span class="type">RichText</span></a>]</code></pre></body></html>
+    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">createdDate</span>: <span class="type">String</span>?</code></pre></body></html>
+</div>
+<div role="article" class="variable" id="coredocumentproperties.lastmodifiedby">
+    <h3>
+        <code>last​Modified​By</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">lastModifiedBy</span>: <span class="type">String</span>?</code></pre></body></html>
+</div>
+<div role="article" class="variable" id="coredocumentproperties.lastmodified">
+    <h3>
+        <code>last​Modified</code>
+    </h3>
+    <html><body><pre class="highlight"><code><span class="keyword">let</span> <span class="variable">lastModified</span>: <span class="type">String</span>?</code></pre></body></html>
 </div>
     </section>
 
