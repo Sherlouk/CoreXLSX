@@ -21,8 +21,27 @@
 public struct Relationships: Codable, Equatable {
   public let items: [Relationship]
 
+  public init(items: [Relationship]) {
+    self.items = items
+  }
+
+  public init(from decoder: any Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    let rawItems = try container.decode([FailableDecodable<Relationship>].self, forKey: .items)
+    self.items = rawItems.compactMap(\.value)
+  }
+
   enum CodingKeys: String, CodingKey {
     case items = "relationship"
+  }
+}
+
+struct FailableDecodable<T: Decodable>: Decodable {
+  let value: T?
+
+  init(from decoder: Decoder) throws {
+    let container = try decoder.singleValueContainer()
+    self.value = try? container.decode(T.self)
   }
 }
 
